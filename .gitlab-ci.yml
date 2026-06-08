@@ -1,0 +1,47 @@
+stages:
+<<<<<<< HEAD
+  - build
+  - deploy
+
+job-1:
+  stage: build
+=======
+  - test1
+  - test2
+ 
+Job-1:
+  stage: test1
+>>>>>>> 057a4c7a4799e99d7e4af1db94dcd249d5baf30c
+  tags:
+    - test
+  only:
+    - master
+  script:
+    - echo "Building the website"
+    - mkdir -p build
+    - cp index.html build/
+    - echo "Build has been completed on $(date)" >> build/build-report.txt
+  artifacts:
+    paths:
+      - build/
+    untracked: false
+    when: on_success
+    access: all
+    expire_in: 1 hour
+
+job-2:
+  stage: deploy
+  tags:
+    - ssh-runner
+  only:
+    - master
+  script:
+    # Create folder on EC2-2
+    - ssh -o StrictHostKeyChecking=no ubuntu@13.127.28.189 "mkdir -p /home/ubuntu/website"
+
+    # Copy build folder to EC2-2
+    - scp -o StrictHostKeyChecking=no -r build/* ubuntu@13.127.28.189:/home/ubuntu/website/
+
+    # Deploy nginx container on EC2-2
+    - ssh -o StrictHostKeyChecking=no ubuntu@13.127.28.189 "docker stop mywebsite || true && docker rm mywebsite || true && docker run -d --name mywebsite -p 80:80 -v /home/ubuntu/website:/usr/share/nginx/html nginx:latest"
+
