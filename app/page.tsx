@@ -586,7 +586,7 @@ export default function DevNoteLandingPage() {
             <a href="#integrations" className="hover:text-white transition-colors">Integrations</a>
           </div>
           <div className="flex items-center gap-4">
-            <a href="http://localhost:3001" target="_blank" className="hidden sm:block text-sm font-medium text-gray-400 hover:text-white transition-colors">Sign In</a>
+            <a href="https://devnote.sudhanvashenoy.com/" target="_blank" className="hidden sm:block text-sm font-medium text-gray-400 hover:text-white transition-colors">Sign In</a>
             <a href="#contact" className="px-5 py-2 text-sm font-bold text-black bg-white hover:bg-gray-200 rounded-full transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(255,255,255,0.2)]">
               Book a Demo
             </a>
