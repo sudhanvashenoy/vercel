@@ -96,7 +96,7 @@ function StatCard({ end, suffix, label, prefix }: { end: number, suffix?: string
       <div className="text-sm text-gray-500 font-medium tracking-wide uppercase">{label}</div>
     </div>
   );
-}
+} 
 
 // Testimonials data
 const testimonials = [
